@@ -1,13 +1,13 @@
-package service;
+package com.expensemonitor.service;
 
 import lombok.RequiredArgsConstructor;
-import model.Expense;
-import model.Group;
-import model.User;
+import com.expensemonitor.model.Expense;
+import com.expensemonitor.model.Group;
+import com.expensemonitor.model.User;
 import org.springframework.stereotype.Service;
-import repo.ExpenseRepo;
-import repo.GroupRepo;
-import repo.UserRepo;
+import com.expensemonitor.repo.ExpenseRepo;
+import com.expensemonitor.repo.GroupRepo;
+import com.expensemonitor.repo.UserRepo;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class ExpenseService {
         User paidUser = userRepo.findById(userId).orElseThrow();
         Group group = groupRepo.findById(groupId).orElseThrow();
 
-        expense.setPaidBy(paidUser);
+        expense.setPaidUser(paidUser);
         expense.setGroup(group);
         return expenseRepo.save(expense);
     }
@@ -35,6 +35,19 @@ public class ExpenseService {
         return expenseRepo.findById(expenseId).orElseThrow();
     }
 
+    public List<Expense> getExpensesByGroupName(String groupName) {
+        return expenseRepo.findByGroupName(groupName);
+    }
+
+    public List<Expense> getExpensesByUser(Long userId) {
+        return expenseRepo.findByPaidUserId(userId);
+    }
+
+    public List<Expense> getExpensesByGroup(Long groupId) {
+        return expenseRepo.findByGroupId(groupId);
+    }
+
+    //Open an API endpoint later
     public Expense updateExpense(Long id, Expense expense) {
         Expense expenseToUpdate = expenseRepo.findById(id).orElseThrow();
         expenseToUpdate.setAmount(expense.getAmount());

@@ -1,26 +1,23 @@
-package model;
+package com.expensemonitor.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Expense {
+public class ExpenseShare {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String description;
-    private Double amount;
-    private LocalDate expenseDate;
 
     @ManyToOne
-    private Group group;
+    private Expense expense;
 
     @ManyToOne
-    private User paidBy;
+    private User user;
+
+    private Double shareAmount;
 }

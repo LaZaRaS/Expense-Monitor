@@ -1,6 +1,6 @@
-package repo;
+package com.expensemonitor.repo;
 
-import model.User;
+import com.expensemonitor.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

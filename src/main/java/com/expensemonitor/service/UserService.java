@@ -1,9 +1,9 @@
-package service;
+package com.expensemonitor.service;
 
 import lombok.RequiredArgsConstructor;
-import model.User;
+import com.expensemonitor.model.User;
 import org.springframework.stereotype.Service;
-import repo.UserRepo;
+import com.expensemonitor.repo.UserRepo;
 
 import java.util.List;
 
@@ -18,5 +18,13 @@ public class UserService {
 
     public List<User> getAllUsers() {
         return userRepo.findAll();
+    }
+
+    public User getUserById(Long id) {
+    return userRepo.findById(id).orElse(null);
+    }
+
+    public void deleteUser(Long id) {
+        userRepo.deleteById(id);
     }
 }

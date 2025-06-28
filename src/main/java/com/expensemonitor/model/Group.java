@@ -1,4 +1,4 @@
-package model;
+package com.expensemonitor.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,15 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExpenseShare {
+@Table(name = "groups")
+public class Group {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
 
     @ManyToOne
-    private Expense expense;
-
-    @ManyToOne
-    private User user;
-
-    private Double shareAmount;
+    private User creator;
 }
