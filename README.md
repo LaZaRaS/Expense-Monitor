@@ -19,3 +19,32 @@ The backend supports user management, group creation, expense tracking, and smar
 - PostgreSQL
 - REST API tested via Postman
 - Upcoming: JWT Authentication, React Frontend, Kafka and AWS S3/SES integration
+
+## 📬 API Usage (Postman Friendly)
+
+You can test the following endpoints using Postman or curl.  
+All requests and responses are in `application/json`.
+
+---
+
+### 👤 Create a User
+
+**POST** `/api/users`
+
+**Request Body:**
+```json
+{
+  "name": "Yokesh",
+  "username": "yokesh123",
+  "password": "123"
+}
+```
+**Response**:
+```json
+{
+  "id": 1,
+  "name": "Yokesh",
+  "username": "yokesh123"
+}
+```
+
